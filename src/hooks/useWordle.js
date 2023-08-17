@@ -6,14 +6,14 @@ const useWordle = (solucao) => {
     const [turno, setTurno] = useState(0) 
     const [tentativaAtual, setTentativaAtual] = useState('')
     const [tentativas, setTentativas] = useState([]) // cada tentativa será um array
-    const [historico, setHistorico] = useState([]) // cada tentativa será um string
+    const [historico, setHistorico] = useState(['ninja']) // cada tentativa será um string
     const [estaCorreto, setCorreto] = useState(false)
 
 
     // formatar a tentativa em um array de objetos em letras
     // ex: [{ tecla: 'a', cor: 'amarelo' }]
-    const fomatarTentativa = () => {
-
+    const aplicarTentativa = () => {
+      console.log('Tentativa aplicada - ', tentativaAtual)
     }
 
     // adicionar uma nova tentativa para o estado de tentativa
@@ -28,6 +28,24 @@ const useWordle = (solucao) => {
     const handleKeyUp = ({ key }) => {
         console.log(key)
 
+        if(key === 'Enter') {
+          // Apenas aplicar a tentativa se o número de turnos for < 5
+          if(turno > 5) {
+            console.log("Suas tentativas acabaram")
+            return
+          }
+          // palavras iguais NÃO serão permitidas
+          if(historico.includes(tentativaAtual)) {
+            console.log("Palavra duplicada. Tente novamente")
+            return
+          }
+          // checar se a palavra tem 5 letras
+          if(tentativaAtual.length !== 5) {
+            console.log("A palavra deve possuir 5 letras")
+            return
+          }
+          aplicarTentativa()
+        }
         if(key === 'Backspace') {
           setTentativaAtual((prev) => {
             return prev.slice(0, -1)
