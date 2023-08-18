@@ -5,8 +5,8 @@ const useWordle = (solucao) => {
     
     const [turno, setTurno] = useState(0) 
     const [tentativaAtual, setTentativaAtual] = useState('')
-    const [tentativas, setTentativas] = useState([]) // cada tentativa será um array
-    const [historico, setHistorico] = useState(['ninja', 'jogar']) // cada tentativa será um string
+    const [tentativas, setTentativas] = useState([...Array(6)]) // cada tentativa será um array
+    const [historico, setHistorico] = useState([]) // cada tentativa será um string
     const [estaCorreto, setCorreto] = useState(false)
 
 
@@ -40,8 +40,24 @@ const useWordle = (solucao) => {
     // adicionar uma nova tentativa para o estado de tentativa
     // atualizar para estaCorreto se a tentativa estiver correta
     // adicionar +1 para o estado de turnos
-    const addNovaTentativa = () => {
+    const addNovaTentativa = (tentativaRealizada) => {
 
+      // condição de vitória
+      if(tentativaAtual === solucao) {
+        setCorreto(true)
+      }
+      setTentativas((prevTentativas) => {
+        let novaTentativas = [...prevTentativas]
+        novaTentativas[turno] = tentativaRealizada
+        return novaTentativas
+      })
+      setHistorico((prevHistorico) => {
+        return [...prevHistorico, tentativaAtual]
+      })
+      setTurno((prevTurno) => {
+        return prevTurno + 1
+      })
+      setTentativaAtual('')
     }
 
     // um handler de evento para tecla e acompanhar a tentaiva atual
@@ -66,7 +82,7 @@ const useWordle = (solucao) => {
             return
           }
           const aplicado = aplicarTentativa()
-          console.log(aplicado)
+          addNovaTentativa(aplicado)
         }
         if(key === 'Backspace') {
           setTentativaAtual((prev) => {
