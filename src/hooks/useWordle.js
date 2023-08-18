@@ -6,14 +6,35 @@ const useWordle = (solucao) => {
     const [turno, setTurno] = useState(0) 
     const [tentativaAtual, setTentativaAtual] = useState('')
     const [tentativas, setTentativas] = useState([]) // cada tentativa será um array
-    const [historico, setHistorico] = useState(['ninja']) // cada tentativa será um string
+    const [historico, setHistorico] = useState(['ninja', 'jogar']) // cada tentativa será um string
     const [estaCorreto, setCorreto] = useState(false)
 
 
     // formatar a tentativa em um array de objetos em letras
     // ex: [{ tecla: 'a', cor: 'amarelo' }]
     const aplicarTentativa = () => {
-      console.log('Tentativa aplicada - ', tentativaAtual)
+      let listaDeTentativas = [...solucao]
+      let tentativaAplicada = [...tentativaAtual].map((l) => {
+        return {tecla: l, cor: 'cinza'}
+      })
+
+      // encontrar qualquer letra em verde
+      tentativaAplicada.forEach((l, i) => {
+        if(listaDeTentativas[i] === l.tecla) {
+          tentativaAplicada[i].cor = 'verde'
+          listaDeTentativas[i] = null
+        }
+      })
+
+      // encontrar qualquer letra em amarelo
+      tentativaAplicada.forEach((l, i) => {
+        if(listaDeTentativas.includes(l.tecla) && l.cor !== 'verde') {
+          tentativaAplicada[i].cor = 'amarelo'
+          listaDeTentativas[listaDeTentativas.indexOf(l.tecla)] = null
+        }
+      })
+
+      return tentativaAplicada
     }
 
     // adicionar uma nova tentativa para o estado de tentativa
@@ -44,7 +65,8 @@ const useWordle = (solucao) => {
             console.log("A palavra deve possuir 5 letras")
             return
           }
-          aplicarTentativa()
+          const aplicado = aplicarTentativa()
+          console.log(aplicado)
         }
         if(key === 'Backspace') {
           setTentativaAtual((prev) => {
