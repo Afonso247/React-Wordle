@@ -15,8 +15,13 @@ function App() {
   }, [setSolucao]);
   return (
     <div className="App">
-      <h1>Wordle (Lingo)</h1>
+      <h1>Wordle</h1>
       {solucao && <Wordle solucao={solucao} />}
+
+      <h4>Criado por Afonso H.</h4>
+      <p>GitHub: <a href="https://github.com/Afonso247" 
+                className="github" target="_blank" rel="noreferrer"
+                >Afonso247</a></p>
     </div>
   );
 }
