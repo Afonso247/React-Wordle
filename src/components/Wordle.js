@@ -30,8 +30,7 @@ export default function Wordle({ solucao }) {
 
     return (
         <div>
-            <div>Resposta: {solucao}</div>
-            <div>tentativa atual - {tentativaAtual}</div>
+            {/* <div>Tentativa: {turno+1}</div> */}
             <Grid tentativaAtual={tentativaAtual} tentativas={tentativas} turno={turno} />
             <Keypad teclasUsadas={teclasUsadas} />
             {mostrarModal && <Modal estaCorreto={estaCorreto} turno={turno} solucao={solucao} />}
