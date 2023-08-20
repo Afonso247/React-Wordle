@@ -82,6 +82,21 @@ h4 {
   border-radius: 6px;
   line-height: 50px;
 }
+.teclado > div.verde {
+  background: #5ac85a;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+.teclado > div.amarelo {
+  background: #e2cc68;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+.teclado > div.cinza {
+  background: #a1a1a1;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
 
 /* animações */
 @keyframes flip {

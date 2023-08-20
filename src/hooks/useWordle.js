@@ -8,6 +8,7 @@ const useWordle = (solucao) => {
     const [tentativas, setTentativas] = useState([...Array(6)]) // cada tentativa será um array
     const [historico, setHistorico] = useState([]) // cada tentativa será um string
     const [estaCorreto, setCorreto] = useState(false)
+    const [teclasUsadas, setTeclasUsadas] = useState({}) // {a: 'verde', b: 'amarelo', c: 'cinza'} 
 
 
     // formatar a tentativa em um array de objetos em letras
@@ -57,6 +58,28 @@ const useWordle = (solucao) => {
       setTurno((prevTurno) => {
         return prevTurno + 1
       })
+      setTeclasUsadas((prevTeclasUsadas) => {
+        let novasTeclas = {...prevTeclasUsadas}
+
+        tentativaRealizada.forEach((l) => {
+          const corAtual = novasTeclas[l.tecla]
+
+          if(l.cor === 'verde') {
+            novasTeclas[l.tecla] = 'verde'
+            return
+          }
+          if(l.cor === 'amarelo' && corAtual !== 'verde') {
+            novasTeclas[l.tecla] = 'amarelo'
+            return
+          }
+          if(l.cor === 'cinza' && corAtual !== 'verde' && corAtual !== 'amarelo') {
+            novasTeclas[l.tecla] = 'cinza'
+            return
+          }
+        })
+
+        return novasTeclas
+      })
       setTentativaAtual('')
     }
 
@@ -100,7 +123,7 @@ const useWordle = (solucao) => {
         }
     }
 
-    return {turno, tentativaAtual, tentativas, estaCorreto, handleKeyUp}
+    return {turno, tentativaAtual, tentativas, estaCorreto, teclasUsadas, handleKeyUp}
 }
 
 export default useWordle
