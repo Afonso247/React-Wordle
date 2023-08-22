@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# React Wordle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao meu Wordle, meu primeiro projeto feito utilizando o React! Este é um guia rápido para ajudá-lo a começar a utilizá-lo. Certifique-se de seguir essas etapas para configurar e executar o projeto em sua máquina local.
 
-## Available Scripts
+## Pré-requisitos
 
-In the project directory, you can run:
+Antes de começar, certifique-se de que você tenha o Node.js e o npm (gerenciador de pacotes do Node.js) instalados em sua máquina. Você pode baixá-los em [nodejs.org](https://nodejs.org/).
 
-### `npm start`
+## Instalação
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone este repositório em sua máquina local usando o seguinte comando:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+~~~
+git clone https://github.com/seu-usuario/seu-projeto.git
+~~~
 
-### `npm test`
+2. Navegue até o diretório do projeto:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+~~~
+cd seu-projeto
+~~~
 
-### `npm run build`
+3. Instale as dependências do projeto usando o npm:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+~~~
+npm install
+~~~
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Configurando o servidor JSON
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para que o sistema funcione normalmente, é necessário executar o servidor JSON dentro da pasta do projeto. Abra um terminal dentro da pasta e execute o seguinte comando:
 
-### `npm run eject`
+~~~
+json-server ./data/db.json --port 3001
+~~~
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Isso iniciará o servidor JSON na porta 3001.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Iniciando o projeto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Agora que o servidor JSON está em execução, abra outro terminal, navegue até o diretório do projeto e execute o seguinte comando para iniciar o projeto:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+~~~
+npm run start
+~~~
 
-## Learn More
+Isso iniciará o projeto e abrirá uma janela do seu navegador padrão, onde você poderá ver o projeto em ação.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acessando o projeto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Após seguir as etapas acima, você poderá acessar o projeto em seu navegador, normalmente em http://localhost:3000 (certifique-se de que o servidor JSON esteja em execução na porta 3001).
 
-### Code Splitting
+Com tudo isso feito, você tem acesso ao meu Wordle! Divirta-se jogando e, se quiser, desenvolvendo ao aplicar as suas próprias features. ;)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Se você tiver alguma dúvida ou encontrar algum problema, não hesite em abrir uma issue!
